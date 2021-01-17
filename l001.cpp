@@ -1,50 +1,54 @@
 #include<iostream>
+#include<cmath>
 using namespace std;
 
 void printHello(){
     cout<<"Hello"<<endl;
 }
+
 void workwithdatatype(){
-        int a=10;
-        int b=20;
-        cout<<"Value of A:"<<a<<endl;
-        cout<<"Value of B:"<<b<<endl;
-    }
+    int a=10;
+    int b=20;
+    cout<<"Value of A:"<<a<<endl;
+    cout<<"Value of B:"<<b<<endl;
+}
+
 void printz(){
         cout<<"*****"<<endl;
         cout<<"   * "<<endl;
         cout<<"  *  "<<endl;
         cout<<" *   "<<endl;
         cout<<"*****"<<endl;
-    }
-void gradingsystem(int n){
-        if(n>90){
-            cout<<"excellent"<<endl;
-        }
-        else if(n>80 && n<=90){
-            cout<<"good"<<endl;
-        }
-        else if(n>70 && n<=80){
-            cout<<"fair"<<endl;
-        }
-        else if(n>60 && n<=70){
-            cout<<"meets"<<endl;
-        }
-        else{
-            cout<<"below par"<<endl;
-        }
-    }
-void oddeven(int n){
-        if (n%2==0){
-            cout<<"Even"<<endl;
-        }
-        else {
-            cout<<"Odd"<<endl;
-            
-        }
-    }
+}
 
-bool isprime_(){
+void gradingsystem(int n){
+    if(n>90){
+        cout<<"excellent"<<endl;
+    }
+    else if(n>80 && n<=90){
+        cout<<"good"<<endl;
+    }
+    else if(n>70 && n<=80){
+        cout<<"fair"<<endl;
+    }
+    else if(n>60 && n<=70){
+        cout<<"meets"<<endl;
+    }
+    else{
+        cout<<"below par"<<endl;
+    }
+}
+
+void oddeven(int n){
+    if (n%2==0){
+        cout<<"Even"<<endl;
+    }
+    else {
+        cout<<"Odd"<<endl;          
+    }
+}
+
+bool isprime_(int n){
     bool prime=true;
     for(int i=2; i*i<n; i++){
         if(n%i==0){
@@ -56,9 +60,7 @@ bool isprime_(){
     return prime;
 }
 
-void isprime(){
-    int x;
-    cin>>x;
+void isprime(int x){
     bool ans= isprime_(x);
     if(ans){
         cout<<"prime"<<endl;
@@ -77,29 +79,31 @@ void isallprime(int a, int b){
     }
 }
 
+//important
 void printfibo(int n){
-        if (n==1){
-            System.out.println(0);
-        }
-        int a=0, b=1;
-        for(int i=1; i<=n; i++){
-            System.out.println(a);
-            int sum=a+b;
-            a=b;
-            b=sum;
-        }
-    }   
+    if (n==1){
+        cout<<0<<endl;
+    }
+    int a=0, b=1;
+    for(int i=1; i<=n; i++){
+        cout<<a<<endl;
+        int sum=a+b;
+        a=b;
+        b=sum;
+    }
+}   
     
 int countdigits(int n){
-        int count=0;
-        int num=n;
-        while(num>0){
-            count = count +1;
-            num=num/10;
-        }
-        return count; 
+    int count=0;
+    int num=n;
+    while(num>0){
+        count = count +1;
+        num=num/10;
     }
+    return count; 
+}
 
+//important
 int rotatenumber(int n, int r){
     int len=countdigits(n);
     r%=len;
@@ -118,7 +122,7 @@ int rotatenumber(int n, int r){
     }
     int a=n%div;
     int b=n/div; 
-    return (a*mul)+div; 
+    return (a*mul)+b; 
 }
 
 void showdigits(int n){
@@ -135,6 +139,7 @@ void showdigits(int n){
     }
 }
 
+//important
 void reversenumber(int n){
     int len=countdigits(n);
     int num=n;
@@ -144,6 +149,7 @@ void reversenumber(int n){
     }
 }
 
+//important
 void inversenumber(int n){
     int len=countdigits(n);
     int num=n;
@@ -151,53 +157,33 @@ void inversenumber(int n){
     int res=0;
     for(int i=1; i<=len; i++){
         digit= n%10;
-        res = res + i*pow(10,digit-1);
+        res = res*10 + digit ;
         n=n/10;
     }
     cout<<res<<endl;
 }
 
-
-
-
-
-void ispytrip(int x, int y, int z){
-    if(x>y){
-        if(x>z){
-            if(x*x==y*y+z*z){
-                cout<<true<<endl;
-            }
-            else{
-                cout<<false<<endl;
-            }
-        }
-        else{
-            if(z*z==x*x+y*y){
-                cout<<true<<endl;
-            }
-            else{
-                cout<<false<<endl;
-            }
-        }
+int gcd(int a, int b){
+    int divisor=a;
+    int divident=b;
+    while(divident%divisor!=0){
+        int rem=divident%divisor;
+        divident=divisor;
+        divisor=rem;
     }
-    else if(x>z){
-        if(x>y){
-            if(x*x==y*y+z*z){
-                cout<<true<<endl;
-            }
-            else{
-                cout<<false<<endl;
-            }
-        }
-        else{
-            if(y*y==x*x+z*z){
-                cout<<true<<endl;
-            }
-            else{
-                cout<<false<<endl;
-            }
-        }
+    return divisor;
+}
+
+int lcm(int a, int b, int gcd){
+    return ((a/gcd)*b);
+}
+
+//important
+bool isPythagorean(int a,int b,int c){
+    if((a*a + b*b == c*c ) || (b*b + c*c == a*a) || (a*a + c*c == b*b)){
+        return true;
     }
+    return false;
 }
 
 void benjaminbulb(int n){
@@ -207,13 +193,25 @@ void benjaminbulb(int n){
 }
 
 int main(){
-    printHello();
-    workwithdatatype();
-    isprime();
-    int t;
-    cin >> t;
-    while(t-->0){
-        isprime();
-    }
+    //printHello();
+    //workwithdatatype();
+    //printz();
+    //int n;
+    //cin>>n;
+    //gradingsystem(n);
+    //oddeven(n);
+    //isprime(n);
+    //int m;
+    //cin>>m;
+    //isallprime(n,m);
+    //printfibo(n);
+    //cout<<countdigits(n);
+    //showdigits(n);
+    //cout<<rotatenumber(n,m);
+    //reversenumber(n);
+    //inversenumber(n);
+    //int k;
+    //cin>>k;
+    //cout<<isPythagorean(n,m,k);
     return 0;
 }
